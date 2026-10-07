@@ -1,0 +1,45 @@
+name: Deploy Web App to GitHub Pages
+
+# Trigger: Se ejecuta solo cuando se hace un PUSH o MERGE directamente en la rama main
+on:
+  push:
+    branches:
+      - main
+
+# Permisos necesarios para poder escribir y desplegar en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Garantiza que solo haya un despliegue activo a la vez
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Descarga el código de la rama main
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Configura el entorno de Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # Step 3: Empaqueta y sube los archivos estáticos (.html, .css, .js) como artefacto
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Publica todo el directorio raíz
+
+      # Step 4: Despliega el artefacto en el entorno oficial de GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
