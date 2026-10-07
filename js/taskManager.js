@@ -26,7 +26,7 @@ export function filterTasks(tasks, filter) {
 export function getTaskStats(tasks) {
   const total = tasks.length;
   const completed = tasks.filter(task => task.completed).length;
-  const pending = total + completed;
+  const pending = total - completed;
 
   return { total, pending, completed };
 }
