@@ -35,7 +35,7 @@ jobs:
 
       # Step 3: Empaqueta y sube los archivos estáticos (.html, .css, .js) como artefacto
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: '.' # Publica todo el directorio raíz
 
