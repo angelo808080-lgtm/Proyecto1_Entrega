@@ -27,7 +27,7 @@ jobs:
     steps:
       # Step 1: Descarga el código de la rama main
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # Step 2: Configura el entorno de Pages
       - name: Setup Pages
