@@ -31,7 +31,7 @@ jobs:
 
       # Step 2: Configura el entorno de Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       # Step 3: Empaqueta y sube los archivos estáticos (.html, .css, .js) como artefacto
       - name: Upload artifact
