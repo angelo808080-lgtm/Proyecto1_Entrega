@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Dependencias npm del proyecto (package.json)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Versiones de las acciones usadas en .github/workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
