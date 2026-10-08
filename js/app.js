@@ -148,3 +148,6 @@ document.querySelectorAll(".filter").forEach(button => {
 
 loadTasks();
 renderTasks();
+
+// PRUEBA CodeQL: código inseguro a propósito (XSS). No hacer merge.
+document.querySelector("#form-error").innerHTML = location.hash;
